@@ -3,4 +3,3 @@
 # Migration CMS
 
 Java open source project to migrate data when changing CMS
->>>>>>> 7568e8b304b7c0eb8916c12ce43784cac3d7dc95
