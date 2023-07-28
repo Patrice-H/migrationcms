@@ -2,8 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="C:\Users\patri\Downloads\cms\cms"/>
 			<item value="D:\Projets\migration-cms"/>
+			<item value="C:\Users\patri\Downloads\cms\cms"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[groupId].[artifactId]"/>
