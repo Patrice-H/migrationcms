@@ -1,0 +1,19 @@
+body {
+  @font-face {
+    font-family: "Ink Free";
+    src: url("assets/fonts/InkFree.eot");
+    src: url("assets/fonts/InkFree.eot?#iefix") format("embedded-opentype"),
+      url("assets/fonts/InkFree.woff2") format("woff2"),
+      url("assets/fonts/InkFree.woff") format("woff"),
+      url("assets/fonts/InkFree.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  background-color: blue;
+  margin: 0;
+  color: red;
+}
+h1 {
+  font-family: "Ink Free";
+}
