@@ -1,4 +1,15 @@
 <nav>
-  <a href="#">Accueil</a><a href="#">Documentation</a><a href="#">Services</a>
+  <a href="#">Accueil</a>
+  <a href="#">Services</a>
+  <a href="#">Documentation</a>
+  <a href="#">Forum</a>
+  <div id="user-page">
+    <div id="user-logo" (click)="openCloseMenu()"></div>
+    <div id="chevron" class="down"></div>
+    <div id="user-menu" *ngIf="isOpened">
+      <a href="#" (click)="openCloseMenu()">Mon compte</a>
+      <a href="#" (click)="openCloseMenu()">Messagerie</a>
+      <a href="#" (click)="openCloseMenu()">Connexion</a>
+    </div>
+  </div>
 </nav>
-<h1>titre menu</h1>
