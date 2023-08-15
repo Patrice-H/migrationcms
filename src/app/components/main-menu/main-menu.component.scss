@@ -1,0 +1,73 @@
+nav {
+  display: flex;
+  width: fit-content;
+  position: absolute;
+  top: 0;
+  right: 0;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+  padding-right: 20px;
+  font-family: "Ink Free";
+  background-color: #1e3e50;
+  a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 20px;
+    &:hover {
+      color: yellow;
+    }
+  }
+}
+#user-page {
+  display: flex;
+  position: relative;
+  width: fit-content;
+}
+#user-logo {
+  width: 50px;
+  height: 50px;
+  margin: 10px 0;
+  background-image: url("../../../assets/perso.png");
+  background-size: cover;
+  &:hover {
+    background-image: url("../../../assets/perso-hover.png");
+    cursor: pointer;
+  }
+}
+#chevron {
+  width: 20px;
+  height: 20px;
+  margin: 15px 5px;
+  background-size: cover;
+  &.down {
+    background-image: url("../../../assets/arrow-down.png");
+  }
+  &.up {
+    background-image: url("../../../assets/arrow-up.png");
+  }
+}
+#user-menu {
+  position: absolute;
+  width: 120px;
+  height: 122px;
+  top: 9px;
+  left: -125px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  background-color: white;
+  border: solid #1e3e50 1px;
+  a {
+    color: black;
+    font-family: "Roboto";
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    &:hover {
+      background-color: #326785;
+      color: yellow;
+    }
+  }
+}
