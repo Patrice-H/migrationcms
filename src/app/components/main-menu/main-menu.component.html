@@ -31,11 +31,15 @@
     <div id="user-logo" (click)="updateActiveTab(true)"></div>
     <div id="chevron" class="down"></div>
     <div id="user-menu" *ngIf="isOpened">
-      <a href="./perso" (click)="updateActiveTab(true, 'perso')">Mon compte</a>
-      <a href="./messagerie" (click)="updateActiveTab(true, 'messagerie')"
+      <a href="./account" (click)="updateActiveTab(true, 'account')"
+        >Mon compte</a
+      >
+      <a href="./messaging" (click)="updateActiveTab(true, 'messaging')"
         >Messagerie</a
       >
-      <a href="./perso" (click)="updateActiveTab(true, 'perso')">Connexion</a>
+      <a href="./account" (click)="updateActiveTab(true, 'account')"
+        >Connexion</a
+      >
     </div>
   </div>
 </nav>

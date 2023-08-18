@@ -21,9 +21,10 @@ export class MainMenuComponent implements OnInit {
         ? 'home'
         : this.router.url.split('/')[1];
     this.activeTab = path;
-    const domTab = document.getElementById(this.activeTab);
-    domTab?.classList.add('active');
+    const activeTab = document.getElementById(this.activeTab);
+    activeTab?.classList.add('active');
     this.resetMenu();
+    this.updateSubMenu();
   }
 
   updateActiveTab(submenu: boolean, tab: string = '#') {
@@ -35,9 +36,17 @@ export class MainMenuComponent implements OnInit {
   updateDOM() {
     const mainMenu = Array.from(document.getElementsByTagName('a'));
     mainMenu.forEach((tab) => tab.classList.remove('active'));
-    const domTab = document.getElementById(this.activeTab);
-    console.log(domTab);
-    domTab?.classList.add('active');
+    this.updateSubMenu();
+    const activeTab = document.getElementById(this.activeTab);
+    activeTab?.classList.add('active');
+  }
+
+  updateSubMenu() {
+    const subMenu = document.getElementById('user-logo');
+    subMenu?.classList.remove('active');
+    if (this.activeTab === 'account' || this.activeTab === 'messaging') {
+      subMenu?.classList.add('active');
+    }
   }
 
   openCloseMenu(): void {
