@@ -1,15 +1,41 @@
 <nav>
-  <a href="#">Accueil</a>
-  <a href="#">Services</a>
-  <a href="#">Documentation</a>
-  <a href="#">Forum</a>
+  <a
+    href="./"
+    id="home"
+    data-testid="home-page"
+    (click)="updateActiveTab(false, 'home')"
+    >Accueil</a
+  >
+  <a
+    href="./services"
+    id="services"
+    data-testid="services-page"
+    (click)="updateActiveTab(false, 'services')"
+    >Services</a
+  >
+  <a
+    href="./docs"
+    id="docs"
+    data-testid="docs-page"
+    (click)="updateActiveTab(false, 'docs')"
+    >Documentation</a
+  >
+  <a
+    href="./forum"
+    id="forum"
+    data-testid="forum-page"
+    (click)="updateActiveTab(false, 'forum')"
+    >Forum</a
+  >
   <div id="user-page">
-    <div id="user-logo" (click)="openCloseMenu()"></div>
+    <div id="user-logo" (click)="updateActiveTab(true)"></div>
     <div id="chevron" class="down"></div>
     <div id="user-menu" *ngIf="isOpened">
-      <a href="#" (click)="openCloseMenu()">Mon compte</a>
-      <a href="#" (click)="openCloseMenu()">Messagerie</a>
-      <a href="#" (click)="openCloseMenu()">Connexion</a>
+      <a href="./perso" (click)="updateActiveTab(true, 'perso')">Mon compte</a>
+      <a href="./messagerie" (click)="updateActiveTab(true, 'messagerie')"
+        >Messagerie</a
+      >
+      <a href="./perso" (click)="updateActiveTab(true, 'perso')">Connexion</a>
     </div>
   </div>
 </nav>
