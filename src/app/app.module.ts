@@ -11,6 +11,13 @@ import { DocumentationComponent } from './pages/documentation/documentation.comp
 import { ForumComponent } from './pages/forum/forum.component';
 import { AccountComponent } from './pages/account/account.component';
 import { MessagingComponent } from './pages/messaging/messaging.component';
+import { TermOfUseComponent } from './pages/term-of-use/term-of-use.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
+import { SecurityComponent } from './pages/security/security.component';
+import { LogSignComponent } from './components/log-sign/log-sign.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +29,13 @@ import { MessagingComponent } from './pages/messaging/messaging.component';
     ForumComponent,
     AccountComponent,
     MessagingComponent,
+    TermOfUseComponent,
+    PrivacyComponent,
+    SecurityComponent,
+    LogSignComponent,
+    LoginComponent,
+    SignupComponent,
+    MessageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MainMenuModule],
   providers: [],
