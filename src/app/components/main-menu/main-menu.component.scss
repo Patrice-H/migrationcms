@@ -18,6 +18,9 @@ nav {
     &:hover {
       color: yellow;
     }
+    &.active {
+      color: yellow;
+    }
   }
 }
 #user-page {
