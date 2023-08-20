@@ -38,6 +38,9 @@ nav {
     background-image: url("../../../assets/perso-hover.png");
     cursor: pointer;
   }
+  &.active {
+    background-image: url("../../../assets/perso-hover.png");
+  }
 }
 #chevron {
   width: 20px;
