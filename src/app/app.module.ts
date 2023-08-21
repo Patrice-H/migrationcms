@@ -18,6 +18,7 @@ import { LogSignComponent } from './components/log-sign/log-sign.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MessageComponent } from './components/message/message.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MessageComponent } from './components/message/message.component';
     LoginComponent,
     SignupComponent,
     MessageComponent,
+    HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MainMenuModule],
   providers: [],
