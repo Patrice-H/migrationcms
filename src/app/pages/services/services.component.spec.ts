@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ServicesComponent } from './services.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
 
 describe('ServicesComponent', () => {
@@ -9,7 +10,7 @@ describe('ServicesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ServicesComponent, MainMenuComponent],
+      declarations: [ServicesComponent, MainMenuComponent, HeaderComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ServicesComponent);

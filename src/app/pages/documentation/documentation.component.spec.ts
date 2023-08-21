@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DocumentationComponent } from './documentation.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
 
 describe('DocumentationComponent', () => {
@@ -9,7 +10,11 @@ describe('DocumentationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DocumentationComponent, MainMenuComponent],
+      declarations: [
+        DocumentationComponent,
+        MainMenuComponent,
+        HeaderComponent,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(DocumentationComponent);

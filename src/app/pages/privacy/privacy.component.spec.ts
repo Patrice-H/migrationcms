@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrivacyComponent } from './privacy.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
 
 describe('PrivacyComponent', () => {
@@ -9,7 +10,7 @@ describe('PrivacyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PrivacyComponent, MainMenuComponent],
+      declarations: [PrivacyComponent, MainMenuComponent, HeaderComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PrivacyComponent);

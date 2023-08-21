@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TermOfUseComponent } from './term-of-use.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
 
 describe('TermOfUseComponent', () => {
@@ -9,7 +10,7 @@ describe('TermOfUseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TermOfUseComponent, MainMenuComponent],
+      declarations: [TermOfUseComponent, MainMenuComponent, HeaderComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TermOfUseComponent);

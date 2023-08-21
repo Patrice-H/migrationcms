@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MessagingComponent } from './messaging.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
 
 describe('MessagingComponent', () => {
@@ -9,7 +10,7 @@ describe('MessagingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MessagingComponent, MainMenuComponent],
+      declarations: [MessagingComponent, MainMenuComponent, HeaderComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MessagingComponent);
