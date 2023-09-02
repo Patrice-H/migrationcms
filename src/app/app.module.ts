@@ -19,6 +19,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MessageComponent } from './components/message/message.component';
 import { HeaderComponent } from './components/header/header.component';
+import { BurgerMenuComponent } from './components/burger-menu/burger-menu.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HeaderComponent } from './components/header/header.component';
     SignupComponent,
     MessageComponent,
     HeaderComponent,
+    BurgerMenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MainMenuModule],
   providers: [],
