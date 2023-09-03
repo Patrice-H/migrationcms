@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PrivacyComponent } from './privacy.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
+import { BurgerMenuComponent } from '../../components/burger-menu/burger-menu.component';
 
 describe('PrivacyComponent', () => {
   let component: PrivacyComponent;
@@ -10,7 +11,12 @@ describe('PrivacyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PrivacyComponent, MainMenuComponent, HeaderComponent],
+      declarations: [
+        PrivacyComponent,
+        MainMenuComponent,
+        BurgerMenuComponent,
+        HeaderComponent,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PrivacyComponent);

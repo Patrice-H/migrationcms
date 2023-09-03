@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ForumComponent } from './forum.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
+import { BurgerMenuComponent } from '../../components/burger-menu/burger-menu.component';
 
 describe('ForumComponent', () => {
   let component: ForumComponent;
@@ -10,7 +11,12 @@ describe('ForumComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ForumComponent, MainMenuComponent, HeaderComponent],
+      declarations: [
+        ForumComponent,
+        MainMenuComponent,
+        BurgerMenuComponent,
+        HeaderComponent,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ForumComponent);

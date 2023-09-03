@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ServicesComponent } from './services.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainMenuComponent } from '../../components/main-menu/main-menu.component';
+import { BurgerMenuComponent } from '../../components/burger-menu/burger-menu.component';
 
 describe('ServicesComponent', () => {
   let component: ServicesComponent;
@@ -10,7 +11,12 @@ describe('ServicesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ServicesComponent, MainMenuComponent, HeaderComponent],
+      declarations: [
+        ServicesComponent,
+        MainMenuComponent,
+        BurgerMenuComponent,
+        HeaderComponent,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ServicesComponent);

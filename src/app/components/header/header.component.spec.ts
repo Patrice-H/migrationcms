@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 import { MainMenuComponent } from '../main-menu/main-menu.component';
+import { BurgerMenuComponent } from '../burger-menu/burger-menu.component';
 import { By } from '@angular/platform-browser';
 
 describe('HeaderComponent', () => {
@@ -10,7 +11,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderComponent, MainMenuComponent],
+      declarations: [HeaderComponent, MainMenuComponent, BurgerMenuComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);

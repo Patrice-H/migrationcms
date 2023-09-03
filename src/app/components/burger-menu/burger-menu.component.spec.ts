@@ -8,16 +8,15 @@ describe('BurgerMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BurgerMenuComponent ]
-    })
-    .compileComponents();
+      declarations: [BurgerMenuComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BurgerMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 });
