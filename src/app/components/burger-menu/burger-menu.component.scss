@@ -3,8 +3,8 @@
   --c: black; /* the color */
 
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   height: var(--s);
   aspect-ratio: 1;
   border: none;
@@ -28,6 +28,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  z-index: 2;
 }
 .burger-menu:before,
 .burger-menu:after {
@@ -64,15 +65,27 @@ nav {
   display: none;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
-  padding: 10px;
+  gap: 5px;
+  width: 225px;
+  padding: 5px;
+  padding-right: 65px;
   position: absolute;
-  top: 0;
-  right: 100px;
-  background-color: red;
+  top: 10px;
+  right: 30px;
+  background-color: white;
+  border: solid 2px #326765;
+  border-radius: 3px;
 }
 a {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 32px;
   font-weight: bold;
+  color: #000;
+  &:hover {
+    background-color: #326785;
+    color: yellow;
+  }
 }
