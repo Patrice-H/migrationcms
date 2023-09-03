@@ -4,3 +4,15 @@ img {
 #logo {
   margin: 20px;
 }
+app-burger-menu {
+  opacity: 0;
+}
+
+@media screen and (max-width: 992px) {
+  app-main-menu {
+    display: none;
+  }
+  app-burger-menu {
+    opacity: 1;
+  }
+}
