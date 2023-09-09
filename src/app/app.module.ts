@@ -20,6 +20,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { MessageComponent } from './components/message/message.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BurgerMenuComponent } from './components/burger-menu/burger-menu.component';
+import { BlackWindowComponent } from './components/black-window/black-window.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { BurgerMenuComponent } from './components/burger-menu/burger-menu.compon
     MessageComponent,
     HeaderComponent,
     BurgerMenuComponent,
+    BlackWindowComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MainMenuModule],
   providers: [],
