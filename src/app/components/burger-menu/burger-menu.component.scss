@@ -44,8 +44,13 @@
   --_p: calc(-1 * var(--s));
   --_s: 0s;
 }
+.burger-menu + nav {
+  display: none;
+  transition: transform 0.6s;
+}
 .burger-menu:checked + nav {
   display: flex;
+  transform: scaleX(2) 0.6s;
 }
 .burger-menu:checked:before {
   transform: rotate(45deg);
@@ -62,11 +67,11 @@
 }
 
 nav {
-  display: none;
-  flex-direction: column;
-  align-items: center;
   gap: 5px;
   width: 225px;
+  transition: scaleX(0);
+  flex-direction: column;
+  align-items: center;
   padding: 5px;
   padding-right: 65px;
   position: absolute;
