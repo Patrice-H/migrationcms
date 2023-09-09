@@ -27,8 +27,8 @@
     (click)="updateActiveTab(false, 'forum')"
     >Forum</a
   >
-  <div id="user-page">
-    <div id="user-logo" (click)="updateActiveTab(true)"></div>
+  <div id="user-page" (click)="updateActiveTab(true)">
+    <div id="user-logo"></div>
     <div id="chevron" class="down"></div>
     <div id="user-menu" *ngIf="isOpened">
       <a href="./account" (click)="updateActiveTab(true, 'account')"
