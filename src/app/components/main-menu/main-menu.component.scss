@@ -27,6 +27,10 @@ nav {
   display: flex;
   position: relative;
   width: fit-content;
+  cursor: pointer;
+  &:hover #user-logo {
+    background-image: url("../../../assets/perso-hover.png");
+  }
 }
 #user-logo {
   width: 50px;
@@ -34,10 +38,6 @@ nav {
   margin: 10px 0;
   background-image: url("../../../assets/perso.png");
   background-size: cover;
-  &:hover {
-    background-image: url("../../../assets/perso-hover.png");
-    cursor: pointer;
-  }
   &.active {
     background-image: url("../../../assets/perso-hover.png");
   }

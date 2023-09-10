@@ -5,7 +5,7 @@ img {
   margin: 20px;
 }
 app-burger-menu {
-  opacity: 0;
+  display: none;
 }
 
 @media screen and (max-width: 992px) {
@@ -13,6 +13,6 @@ app-burger-menu {
     display: none;
   }
   app-burger-menu {
-    opacity: 1;
+    display: block;
   }
 }
