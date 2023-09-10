@@ -22,6 +22,7 @@
   background-size: 20% 80%, 40% 100%;
   clip-path: inset(0 25%);
   -webkit-mask: linear-gradient(90deg, #0000, #000 25% 75%, #0000);
+  mask: linear-gradient(90deg, #0000, #000 25% 75%, #0000);
   cursor: pointer;
   transition: background-position 0.3s var(--_s, 0.3s),
     clip-path 0s var(--_s, 0.6s);
@@ -61,6 +62,7 @@
 .burger-menu:focus-visible {
   clip-path: none;
   -webkit-mask: none;
+  mask: none;
   border: none;
   outline: 2px solid var(--c);
   outline-offset: 5px;
