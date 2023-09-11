@@ -10,6 +10,7 @@ export class MainMenuComponent implements OnInit {
   isOpened!: boolean;
   chevronState!: string;
   @Input() activeTab = '';
+  @Output() mainLink = new EventEmitter<string>();
 
   constructor(private router: Router) {}
 
@@ -27,18 +28,16 @@ export class MainMenuComponent implements OnInit {
     this.updateSubMenu();
   }
 
-  updateActiveTab(submenu: boolean, tab: string = '#') {
-    tab === '#' ? null : (this.activeTab = tab);
-    submenu ? this.openCloseMenu() : null;
-    this.updateDOM();
-  }
-
-  updateDOM() {
-    const mainMenu = Array.from(document.getElementsByTagName('a'));
-    mainMenu.forEach((tab) => tab.classList.remove('active'));
-    this.updateSubMenu();
-    const activeTab = document.getElementById(this.activeTab);
-    activeTab?.classList.add('active');
+  navigate(event: MouseEvent, target: string) {
+    if (
+      target === 'services' ||
+      target === 'account' ||
+      target === 'messaging' ||
+      target === 'forum'
+    ) {
+      event.preventDefault();
+      this.mainLink.emit(target);
+    }
   }
 
   updateSubMenu() {

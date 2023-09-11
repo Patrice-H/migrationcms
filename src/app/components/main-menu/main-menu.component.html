@@ -3,43 +3,39 @@
     href="./"
     id="home"
     data-testid="home-page"
-    (click)="updateActiveTab(false, 'home')"
+    (click)="navigate($event, 'home')"
     >Accueil</a
   >
   <a
     href="./services"
     id="services"
     data-testid="services-page"
-    (click)="updateActiveTab(false, 'services')"
+    (click)="navigate($event, 'services')"
     >Services</a
   >
   <a
     href="./docs"
     id="docs"
     data-testid="docs-page"
-    (click)="updateActiveTab(false, 'docs')"
+    (click)="navigate($event, 'docs')"
     >Documentation</a
   >
   <a
     href="./forum"
     id="forum"
     data-testid="forum-page"
-    (click)="updateActiveTab(false, 'forum')"
+    (click)="navigate($event, 'forum')"
     >Forum</a
   >
-  <div id="user-page" (click)="updateActiveTab(true)">
+  <div id="user-page" (click)="openCloseMenu()">
     <div id="user-logo"></div>
     <div id="chevron" class="down"></div>
     <div id="user-menu" *ngIf="isOpened">
-      <a href="./account" (click)="updateActiveTab(true, 'account')"
-        >Mon compte</a
-      >
-      <a href="./messaging" (click)="updateActiveTab(true, 'messaging')"
+      <a href="./account" (click)="navigate($event, 'account')">Mon compte</a>
+      <a href="./messaging" (click)="navigate($event, 'messaging')"
         >Messagerie</a
       >
-      <a href="./account" (click)="updateActiveTab(true, 'account')"
-        >Connexion</a
-      >
+      <a href="./account" (click)="navigate($event, 'account')">Connexion</a>
     </div>
   </div>
 </nav>
