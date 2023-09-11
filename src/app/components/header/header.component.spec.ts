@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { HeaderComponent } from './header.component';
 import { MainMenuComponent } from '../main-menu/main-menu.component';
 import { BurgerMenuComponent } from '../burger-menu/burger-menu.component';
-import { By } from '@angular/platform-browser';
+import { LogSignComponent } from 'src/app/components/log-sign/log-sign.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -11,7 +12,12 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderComponent, MainMenuComponent, BurgerMenuComponent],
+      declarations: [
+        HeaderComponent,
+        MainMenuComponent,
+        BurgerMenuComponent,
+        LogSignComponent,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LogSignComponent } from './log-sign.component';
+import { BlackWindowComponent } from '../black-window/black-window.component';
 
 describe('LogSignComponent', () => {
   let component: LogSignComponent;
@@ -8,7 +9,7 @@ describe('LogSignComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LogSignComponent],
+      declarations: [LogSignComponent, BlackWindowComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LogSignComponent);
