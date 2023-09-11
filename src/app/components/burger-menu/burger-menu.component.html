@@ -5,11 +5,41 @@
   class="burger-menu"
 />
 <nav>
-  <a href="./" id="home" data-testid="home-page">Accueil</a>
-  <a href="./services" id="services" data-testid="services-page">Services</a>
-  <a href="./docs" id="docs" data-testid="docs-page">Documentation</a>
-  <a href="./forum" id="forum" data-testid="forum-page">Forum</a>
-  <a href="./account" id="account" data-testid="account-page">Mon Compte</a>
-  <a href="#" id="connexion">Connexion</a>
+  <a
+    href="./"
+    id="home"
+    data-testid="home-page"
+    (click)="navigate($event, 'home')"
+    >Accueil</a
+  >
+  <a
+    href="./services"
+    id="services"
+    data-testid="services-page"
+    (click)="navigate($event, 'services')"
+    >Services</a
+  >
+  <a
+    href="./docs"
+    id="docs"
+    data-testid="docs-page"
+    (click)="navigate($event, 'docs')"
+    >Documentation</a
+  >
+  <a
+    href="./forum"
+    id="forum"
+    data-testid="forum-page"
+    (click)="navigate($event, 'forum')"
+    >Forum</a
+  >
+  <a
+    href="./account"
+    id="account"
+    data-testid="account-page"
+    (click)="navigate($event, 'account')"
+    >Mon Compte</a
+  >
+  <a href="#" id="connexion" (click)="navigate($event, 'account')">Connexion</a>
   <!-- other links -->
 </nav>
