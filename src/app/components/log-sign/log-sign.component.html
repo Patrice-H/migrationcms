@@ -1,1 +1,26 @@
-<p>log-sign works!</p>
+<app-black-window (cancel)="cancel($event)"></app-black-window>
+<div *ngIf="!isHidden">
+  <form>
+    <label for="email">E-mail</label>
+    <span id="error-message" class="hidden">{{ errorMessage }}</span>
+    <input
+      #email
+      type="text"
+      id="email"
+      (click)="edit()"
+      (change)="modify(email.value)"
+    />
+    <p>
+      <input type="checkbox" id="term-of-use" (click)="approve()" />
+      <span>J’ai lu et j’accepte les </span>
+      <a href="#">Conditions Générales d’Utilisation</a>
+      <span> et la </span>
+      <a href="#">politique de confidentialité</a>
+    </p>
+    <button (click)="controlForm($event)">
+      <span>Se Connecter</span>
+      <span>ou</span>
+      <span>Ouvir un compte</span>
+    </button>
+  </form>
+</div>

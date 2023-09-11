@@ -1,0 +1,133 @@
+div {
+  background-color: white;
+  position: absolute;
+  top: 200px;
+  left: 30%;
+  right: 30%;
+  padding: 2px;
+  z-index: 20;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #f2f2fd;
+  border: solid 2px #326765;
+  border-radius: 3px;
+  padding: 50px;
+}
+label {
+  font-weight: bold;
+}
+#error-message {
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: right;
+  margin-top: -20px;
+  padding-left: 50px;
+  height: 14px;
+}
+.error {
+  border-radius: 3px;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+#email {
+  height: 30px;
+  border: solid 1px #326765;
+  border-radius: 3px;
+  font-size: 16px;
+  padding-left: 5px;
+  &.error {
+    border: solid 1px red;
+  }
+}
+#term-of-use {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  width: 22px;
+  border: solid 1px #326765;
+  border-radius: 3px;
+  background-color: white;
+  background-size: cover;
+  cursor: pointer;
+  &.error {
+    border: solid 1px red;
+    background-color: rgba(255, 0, 0, 0.1);
+  }
+  &.approved {
+    background-image: url("../../../assets/checkbox.png");
+  }
+}
+p,
+#term-of-use {
+  margin: 0;
+  margin-right: 5px;
+  padding: 10px 0;
+}
+button {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #1e3e50;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  cursor: pointer;
+  & span {
+    display: block;
+  }
+  &:hover {
+    color: yellow;
+  }
+}
+.hidden {
+  opacity: 0;
+}
+@media screen and (min-width: 1440px) {
+  div {
+    left: 35%;
+    right: 33%;
+  }
+}
+@media screen and (max-width: 992px) {
+  div {
+    left: 25%;
+    right: 25%;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 768px) {
+  div {
+    left: 15%;
+    right: 15%;
+  }
+  p {
+    font-size: 12px;
+  }
+  .error {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  div {
+    left: 10%;
+    right: 10%;
+  }
+  form {
+    padding: 50px 30px;
+  }
+  label {
+    font-size: 14px;
+  }
+  button {
+    font-size: 16px;
+  }
+}
