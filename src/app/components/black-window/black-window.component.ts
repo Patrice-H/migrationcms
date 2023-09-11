@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class BlackWindowComponent {
   @Input() activePage;
+  @Output() cancel = new EventEmitter<boolean>();
 
   constructor(private router: Router) {
     const path =
@@ -22,9 +23,16 @@ export class BlackWindowComponent {
     const window = document.getElementById('black-window');
     button?.classList.add('activated');
     window?.classList.add('progressive-hidden');
-    console.log(this.activePage);
     setTimeout(() => {
       button?.classList.add('hidden');
     }, 600);
+    this.cancel.emit(true);
+  }
+  resetComponent(): void {
+    const button = document.getElementById('close-btn');
+    const window = document.getElementById('black-window');
+    button?.classList.remove('activated');
+    button?.classList.remove('hidden');
+    window?.classList.remove('progressive-hidden');
   }
 }
