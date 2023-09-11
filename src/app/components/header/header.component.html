@@ -1,8 +1,11 @@
 <header>
-  <app-black-window *ngIf="!isConnected"></app-black-window>
+  <app-log-sign *ngIf="!isConnected" (displayed)="reset()"></app-log-sign>
   <div id="logo">
     <img src="../../../assets/logo1.3.0.jpg" alt="logo" />
   </div>
-  <app-main-menu [activeTab]="activePage"></app-main-menu>
-  <app-burger-menu></app-burger-menu>
+  <app-main-menu
+    [activeTab]="activePage"
+    (mainLink)="display($event)"
+  ></app-main-menu>
+  <app-burger-menu (burgerLink)="display($event)"></app-burger-menu>
 </header>

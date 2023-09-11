@@ -28,6 +28,18 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isConnected = false;
     }
-    // + Session storage logic
+  }
+  display(s: string): void {
+    if (
+      s === 'account' ||
+      s === 'services' ||
+      s === 'forum' ||
+      s === 'messaging'
+    ) {
+      this.isConnected = false;
+    }
+  }
+  reset(): void {
+    this.isConnected = true;
   }
 }
