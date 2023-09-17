@@ -1,1 +1,48 @@
-<p>signup works!</p>
+<app-black-window (cancel)="cancel($event)"></app-black-window>
+<div *ngIf="!isHidden" class="signup-modal">
+  <form>
+    <label for="email">E-mail</label>
+    <span id="error-email" class="hidden">{{ errorEmail }}</span>
+    <input
+      #email
+      type="text"
+      id="email"
+      value="{{ eMail }}"
+      (click)="reset(email.id)"
+      (change)="modify(email.id, email.value)"
+    />
+    <label for="last-name">Nom</label>
+    <span id="error-last-name" class="hidden">{{ errorLastName }}</span>
+    <input
+      #lastname
+      type="text"
+      id="last-name"
+      (click)="reset(lastname.id)"
+      (change)="modify(lastname.id, lastname.value)"
+    />
+    <label for="first-name">Prénom</label>
+    <span id="error-first-name" class="hidden">{{ errorFirstName }}</span>
+    <input
+      #firstname
+      type="text"
+      id="first-name"
+      (click)="reset(firstname.id)"
+      (change)="modify(firstname.id, firstname.value)"
+    />
+    <label for="user-name">Nom d'utilisateur</label>
+    <input
+      #username
+      type="text"
+      id="user-name"
+      value="{{ firstName }} {{ lastName }}"
+      (click)="reset(username.id)"
+      (change)="modify(username.id, username.value)"
+    />
+    <button (click)="controlForm($event)">
+      <span>Créer mon compte</span>
+    </button>
+  </form>
+  <div *ngIf="endForm" id="final-window">
+    <p>Un e-mail contenant un lien d'activation, viens de vous être envoyé.</p>
+  </div>
+</div>
