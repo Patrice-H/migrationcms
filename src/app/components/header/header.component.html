@@ -1,5 +1,15 @@
 <header>
-  <app-log-sign *ngIf="!isConnected" (displayed)="reset()"></app-log-sign>
+  <app-log-sign
+    *ngIf="logSignView"
+    (closeApp)="reset()"
+    (nextStep)="routing($event)"
+  ></app-log-sign>
+  <app-login
+    *ngIf="loginView"
+    (closeApp)="reset()"
+    (nextStep)="routing($event)"
+  ></app-login>
+  <app-signup *ngIf="signupView" (closeApp)="reset()"></app-signup>
   <div id="logo">
     <img src="../../../assets/logo1.3.0.jpg" alt="logo" />
   </div>

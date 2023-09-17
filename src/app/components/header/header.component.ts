@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   @Input() activePage;
-  isConnected!: boolean;
+  loginView!: boolean;
+  logSignView!: boolean;
+  signupView!: boolean;
 
   constructor(private router: Router) {
     const path =
@@ -19,14 +21,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (
-      this.activePage === 'home' ||
-      this.activePage === 'docs' ||
-      this.activePage === 'contact'
-    ) {
-      this.isConnected = true;
+    this.loginView = false;
+    const pages = ['home', 'docs', 'contact'];
+    if (pages.includes(this.activePage)) {
+      this.logSignView = false;
     } else {
-      this.isConnected = false;
+      this.logSignView = true;
     }
   }
   display(s: string): void {
@@ -36,10 +36,23 @@ export class HeaderComponent implements OnInit {
       s === 'forum' ||
       s === 'messaging'
     ) {
-      this.isConnected = false;
+      this.logSignView = true;
     }
   }
   reset(): void {
-    this.isConnected = true;
+    this.logSignView = false;
+    this.loginView = false;
+    this.signupView = false;
+  }
+  routing(route: string): void {
+    route === 'signUp' ? this.stepSign() : this.stepLog();
+  }
+  stepLog(): void {
+    this.logSignView = false;
+    this.loginView = true;
+  }
+  stepSign(): void {
+    this.logSignView = false;
+    this.signupView = true;
   }
 }
