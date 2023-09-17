@@ -1,13 +1,13 @@
 <app-black-window (cancel)="cancel($event)"></app-black-window>
-<div *ngIf="!isHidden">
+<div *ngIf="!isHidden" class="modal">
   <form>
     <label for="email">E-mail</label>
-    <span id="error-message" class="hidden">{{ errorMessage }}</span>
+    <span id="error-email" class="hidden">{{ errorMessage }}</span>
     <input
       #email
       type="text"
       id="email"
-      (click)="edit()"
+      (click)="reset()"
       (change)="modify(email.value)"
     />
     <p>
@@ -23,4 +23,7 @@
       <span>Ouvir un compte</span>
     </button>
   </form>
+  <div *ngIf="endForm" id="final-window">
+    <p>Vous êtes déjà connecté !</p>
+  </div>
 </div>
