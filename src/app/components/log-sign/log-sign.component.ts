@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
+import { FormService } from 'src/app/services/form.service';
 
 @Component({
   selector: 'app-log-sign',
@@ -7,14 +9,21 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class LogSignComponent {
   isHidden: boolean = false;
+  endForm: boolean = false;
   errorMessage: string = '';
   termOfUseApproved: boolean = false;
   userEmail: string = '';
-  @Output() displayed = new EventEmitter<boolean>();
+  @Output() closeApp = new EventEmitter<boolean>();
+  @Output() nextStep = new EventEmitter<string>();
+
+  constructor(
+    private storage: StorageService,
+    private formElement: FormService
+  ) {}
 
   cancel(op: boolean): void {
     this.isHidden = op;
-    this.displayed.emit(true);
+    this.closeApp.emit(true);
   }
   approve(): void {
     const checkbox = document.getElementById('term-of-use');
@@ -24,53 +33,42 @@ export class LogSignComponent {
       ? checkbox?.classList.add('approved')
       : checkbox?.classList.remove('approved');
   }
-  edit(): void {
-    const input = document.getElementById('email');
-    const message = document.getElementById('error-message');
-    input?.classList.remove('error');
-    message?.classList.add('hidden');
+  reset(): void {
+    this.formElement.resetComponent('email');
     this.errorMessage = '';
   }
   modify(value: string): void {
     this.userEmail = value;
   }
-  emailConform(): boolean {
-    const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    if (this.userEmail.match(regex) === null && this.userEmail !== '') {
-      return false;
-    }
-
-    return true;
-  }
-  dataEntry(): boolean {
-    if (this.userEmail === '') {
-      return false;
-    }
-
-    return true;
-  }
   controlForm(event: MouseEvent) {
-    event.preventDefault();
-    const input = document.getElementById('email');
     const checkbox = document.getElementById('term-of-use');
-    const message = document.getElementById('error-message');
     let errors = false;
-    if (!this.dataEntry()) {
-      input?.classList.add('error');
-      this.errorMessage = 'Merci de renseigner votre E-mail';
-      message?.classList.remove('hidden');
+    event.preventDefault();
+    if (this.formElement.emptyField(this.userEmail)) {
+      this.errorMessage = this.formElement.emptyFieldError;
+      this.formElement.displayError('email');
       errors = true;
     }
-    if (!this.emailConform()) {
-      input?.classList.add('error');
-      this.errorMessage = 'E-mail invalide';
-      message?.classList.remove('hidden');
+    if (this.formElement.emailInvalid(this.userEmail)) {
+      this.errorMessage = this.formElement.invalidEmailError;
+      this.formElement.displayError('email');
       errors = true;
     }
     if (!this.termOfUseApproved) {
       checkbox?.classList.add('error');
       errors = true;
     }
-    //console.log(errors ? 'INVALID' : 'OK');
+    errors ? null : this.controlEmail();
+  }
+  controlEmail() {
+    if (this.storage.updateEmail(this.userEmail)) {
+      /* control backend  */
+      /* email unknown =>
+      this.nextStep.emit('signup');
+      /* email match => */
+      this.nextStep.emit('login');
+    } else {
+      this.endForm = true;
+    }
   }
 }
