@@ -1,4 +1,4 @@
-div {
+.modal {
   background-color: white;
   position: absolute;
   top: 200px;
@@ -19,7 +19,7 @@ form {
 label {
   font-weight: bold;
 }
-#error-message {
+#error-email {
   color: red;
   font-size: 12px;
   font-weight: bold;
@@ -86,17 +86,32 @@ button {
     color: yellow;
   }
 }
+#final-window {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  left: 10px;
+  width: 93%;
+  height: 93%;
+  background-color: #f2f2fd;
+  & p {
+    text-align: center;
+    font-size: 24px;
+  }
+}
 .hidden {
   opacity: 0;
 }
 @media screen and (min-width: 1440px) {
-  div {
+  .modal {
     left: 35%;
     right: 33%;
   }
 }
 @media screen and (max-width: 992px) {
-  div {
+  .modal {
     left: 25%;
     right: 25%;
   }
@@ -105,7 +120,7 @@ button {
   }
 }
 @media screen and (max-width: 768px) {
-  div {
+  .modal {
     left: 15%;
     right: 15%;
   }
@@ -117,7 +132,7 @@ button {
   }
 }
 @media screen and (max-width: 480px) {
-  div {
+  .modal {
     left: 10%;
     right: 10%;
   }
