@@ -1,1 +1,27 @@
-<p>login works!</p>
+<app-black-window (cancel)="cancel($event)"></app-black-window>
+<div *ngIf="!isHidden">
+  <form>
+    <label for="email">Mot de passe</label>
+    <span id="error-message" class="hidden">{{ errorMessage }}</span>
+    <input
+      #pass
+      type="password"
+      id="pass"
+      (click)="reset()"
+      (change)="modify(pass.value)"
+    />
+    <a>Mot de passe oublié ?</a>
+    <p>
+      <input
+        type="checkbox"
+        id="remembered"
+        class="checkbox"
+        (click)="remember()"
+      />
+      <span>Se souvenir de moi</span>
+    </p>
+    <button (click)="controlForm($event)">
+      <span>Se Connecter</span>
+    </button>
+  </form>
+</div>
