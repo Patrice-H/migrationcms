@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MainMenuModule } from './components/main-menu/main-menu.module';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { DocumentationComponent } from './pages/documentation/documentation.component';
@@ -19,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MessageComponent } from './components/message/message.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { BurgerMenuComponent } from './components/burger-menu/burger-menu.component';
 import { BlackWindowComponent } from './components/black-window/black-window.component';
 
@@ -40,10 +40,11 @@ import { BlackWindowComponent } from './components/black-window/black-window.com
     SignupComponent,
     MessageComponent,
     HeaderComponent,
+    MainMenuComponent,
     BurgerMenuComponent,
     BlackWindowComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MainMenuModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
