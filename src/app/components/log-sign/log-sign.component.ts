@@ -66,7 +66,7 @@ export class LogSignComponent {
       /* email unknown =>
       this.nextStep.emit('signup');
       /* email match => */
-      this.nextStep.emit('login');
+      this.nextStep.emit('logIn');
     } else {
       this.endForm = true;
     }
