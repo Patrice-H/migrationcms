@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,9 @@ export class HeaderComponent implements OnInit {
   loginView!: boolean;
   logSignView!: boolean;
   signupView!: boolean;
+  activeLink!: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private storage: StorageService) {
     const path =
       this.router.url.split('/')[1] === ''
         ? 'home'
@@ -21,22 +23,20 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginView = false;
-    const pages = ['home', 'docs', 'contact'];
-    if (pages.includes(this.activePage)) {
-      this.logSignView = false;
-    } else {
-      this.logSignView = true;
-    }
+    this.display(this.activePage);
   }
-  display(s: string): void {
+  display(page: string): void {
+    this.activeLink = page;
     if (
-      s === 'account' ||
-      s === 'services' ||
-      s === 'forum' ||
-      s === 'messaging'
+      (page === 'account' ||
+        page === 'services' ||
+        page === 'forum' ||
+        page === 'messaging') &&
+      !this.storage.isConnected()
     ) {
       this.logSignView = true;
+    } else {
+      this.router.navigate([`/${this.activeLink}`]);
     }
   }
   reset(): void {
@@ -45,7 +45,19 @@ export class HeaderComponent implements OnInit {
     this.signupView = false;
   }
   routing(route: string): void {
-    route === 'signUp' ? this.stepSign() : this.stepLog();
+    switch (route) {
+      case 'signUp':
+        this.stepSign();
+        break;
+      case 'logIn':
+        this.stepLog();
+        break;
+      case 'account':
+        this.connect();
+        break;
+      default:
+        break;
+    }
   }
   stepLog(): void {
     this.logSignView = false;
@@ -54,5 +66,15 @@ export class HeaderComponent implements OnInit {
   stepSign(): void {
     this.logSignView = false;
     this.signupView = true;
+  }
+  connect(): void {
+    this.reset();
+    if (this.storage.isConnected()) {
+      this.router.navigate([`/${this.activeLink}`]);
+      console.log('connecté');
+    } else {
+      console.log('déonnecté');
+      this.router.navigate(['/']);
+    }
   }
 }

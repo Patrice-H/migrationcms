@@ -6,6 +6,7 @@
   ></app-log-sign>
   <app-login
     *ngIf="loginView"
+    [activeLink]="activeLink"
     (closeApp)="reset()"
     (nextStep)="routing($event)"
   ></app-login>
