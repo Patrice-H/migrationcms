@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -9,10 +10,11 @@ import { Router } from '@angular/router';
 export class MainMenuComponent implements OnInit {
   isOpened!: boolean;
   chevronState!: string;
+  buttonLabel!: string;
   @Input() activeTab = '';
   @Output() mainLink = new EventEmitter<string>();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private storage: StorageService) {}
 
   ngOnInit(): void {
     this.isOpened = false;
@@ -24,20 +26,14 @@ export class MainMenuComponent implements OnInit {
     this.activeTab = path;
     const activeTab = document.getElementById(this.activeTab);
     activeTab?.classList.add('active');
+    this.buttonLabel = this.storage.isConnected() ? 'Déconnexion' : 'Connexion';
     this.resetMenu();
     this.updateSubMenu();
   }
 
   navigate(event: MouseEvent, target: string) {
-    if (
-      target === 'services' ||
-      target === 'account' ||
-      target === 'messaging' ||
-      target === 'forum'
-    ) {
-      event.preventDefault();
-      this.mainLink.emit(target);
-    }
+    event.preventDefault();
+    this.mainLink.emit(target);
   }
 
   updateSubMenu() {
@@ -58,5 +54,16 @@ export class MainMenuComponent implements OnInit {
     const chevron = document.getElementById('chevron');
     chevron?.setAttribute('class', '');
     chevron?.classList.add(this.chevronState);
+  }
+  logInOut(event: MouseEvent) {
+    event.preventDefault();
+    if (this.buttonLabel === 'Connexion') {
+      this.storage.writeToken();
+      this.buttonLabel = 'Déconnexion';
+    } else {
+      this.storage.disconnect();
+      this.buttonLabel = 'Connexion';
+    }
+    this.mainLink.emit('account');
   }
 }
