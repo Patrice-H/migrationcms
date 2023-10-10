@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormService } from 'src/app/services/form.service';
 
@@ -7,7 +7,7 @@ import { FormService } from 'src/app/services/form.service';
   templateUrl: './log-sign.component.html',
   styleUrls: ['./log-sign.component.scss'],
 })
-export class LogSignComponent {
+export class LogSignComponent implements OnInit {
   isHidden: boolean = false;
   endForm: boolean = false;
   errorMessage: string = '';
@@ -20,6 +20,10 @@ export class LogSignComponent {
     private storage: StorageService,
     private formElement: FormService
   ) {}
+
+  ngOnInit(): void {
+    this.isHidden = this.storage.isConnected() ? true : false;
+  }
 
   cancel(op: boolean): void {
     this.isHidden = op;
@@ -61,14 +65,14 @@ export class LogSignComponent {
     errors ? null : this.controlEmail();
   }
   controlEmail() {
-    if (this.storage.updateEmail(this.userEmail)) {
+    if (this.storage.isConnected()) {
       /* control backend  */
       /* email unknown =>
       this.nextStep.emit('signup');
       /* email match => */
-      this.nextStep.emit('logIn');
+      this.nextStep.emit('account');
     } else {
-      this.endForm = true;
+      this.nextStep.emit('logIn');
     }
   }
 }
