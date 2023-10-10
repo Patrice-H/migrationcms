@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
       console.log('connecté');
     } else {
       console.log('déonnecté');
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }
   }
 }
