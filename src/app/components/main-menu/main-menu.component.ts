@@ -63,6 +63,7 @@ export class MainMenuComponent implements OnInit {
     } else {
       this.storage.disconnect();
       this.buttonLabel = 'Connexion';
+      this.router.navigate(['/home']);
     }
     this.mainLink.emit('account');
   }

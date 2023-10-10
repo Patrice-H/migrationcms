@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class BurgerMenuComponent implements OnInit {
   buttonLabel!: string;
   @Output() burgerLink = new EventEmitter<string>();
 
-  constructor(private storage: StorageService) {}
+  constructor(private storage: StorageService, private router: Router) {}
 
   ngOnInit(): void {
     this.buttonLabel = this.storage.isConnected() ? 'Déconnexion' : 'Connexion';
@@ -28,6 +29,7 @@ export class BurgerMenuComponent implements OnInit {
     } else {
       this.storage.disconnect();
       this.buttonLabel = 'Connexion';
+      this.router.navigate(['/home']);
     }
 
     this.burgerLink.emit('account');
