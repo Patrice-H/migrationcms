@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormService } from 'src/app/services/form.service';
 
@@ -12,12 +13,14 @@ export class LoginComponent {
   errorMessage: string = '';
   userRemembered: boolean = false;
   password: string = '';
+  @Input() activeLink!: string;
   @Output() closeApp = new EventEmitter<boolean>();
   @Output() nextStep = new EventEmitter<string>();
 
   constructor(
     private storage: StorageService,
-    private formElement: FormService
+    private formElement: FormService,
+    private router: Router
   ) {}
 
   cancel(op: boolean): void {
@@ -35,12 +38,9 @@ export class LoginComponent {
     const checkbox = document.getElementById('remembered');
     checkbox?.classList.remove('error');
     this.userRemembered = !this.userRemembered;
-    if (this.userRemembered) {
-      checkbox?.classList.add('approved');
-      this.storage.setExpiryDate();
-    } else {
-      checkbox?.classList.remove('approved');
-    }
+    this.userRemembered
+      ? checkbox?.classList.add('approved')
+      : checkbox?.classList.remove('approved');
   }
   dataEntry(): boolean {
     if (this.password === '') {
@@ -52,17 +52,26 @@ export class LoginComponent {
   controlForm(event: MouseEvent) {
     let errors = false;
     event.preventDefault();
-    const input = document.getElementById('pass');
-    const message = document.getElementById('error-message');
-
-    if (!this.dataEntry()) {
-      input?.classList.add('error');
-      this.errorMessage = 'Votre Mot de passe est requis';
-      message?.classList.remove('hidden');
+    if (this.formElement.emptyField(this.password)) {
+      this.errorMessage = this.formElement.emptyFieldError;
+      this.formElement.displayError('pass');
       errors = true;
     }
+    this.userRemembered ? this.storage.setExpiryDate() : null;
     if (!errors) {
-      this.nextStep.emit('signUp');
+      this.sendForm();
     }
+  }
+  sendForm() {
+    /* control backend  */
+    /* pass unknown =>
+    this.errorMessage = this.formElement.invalidPasswordError;
+    this.formElement.displayError('pass')
+    /* pass match => */
+    this.storage.writeToken();
+    this.redirection();
+  }
+  redirection() {
+    this.nextStep.emit('account');
   }
 }
