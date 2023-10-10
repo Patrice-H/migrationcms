@@ -7,6 +7,7 @@ export class FormService {
   emptyFieldError: string = 'champ requis';
   invalidEmailError: string = 'e-mail invalide';
   invalidNameError: string = 'format invalide';
+  invalidPasswordError: string = 'mot de passe invalide';
 
   resetComponent(id: string) {
     const input = document.getElementById(id);
