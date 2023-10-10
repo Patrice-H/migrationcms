@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SignupComponent } from './signup.component';
+import { BlackWindowComponent } from '../black-window/black-window.component';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -8,7 +9,7 @@ describe('SignupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SignupComponent],
+      declarations: [SignupComponent, BlackWindowComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SignupComponent);
