@@ -9,14 +9,15 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class SignupComponent implements OnInit {
   isHidden: boolean = false;
-  eMail!: string;
-  errorEmail: string = '';
-  lastName!: string;
-  errorLastName: string = '';
-  firstName!: string;
-  errorFirstName: string = '';
-  userName!: string;
   endForm: boolean = false;
+  eMail!: string;
+  lastName!: string;
+  firstName!: string;
+  userName!: string;
+  errorEmail: string = this.formElement.noError;
+  errorLastName: string = this.formElement.noError;
+  errorFirstName: string = this.formElement.noError;
+
   @Output() closeApp = new EventEmitter<boolean>();
 
   constructor(
@@ -34,17 +35,18 @@ export class SignupComponent implements OnInit {
     this.isHidden = op;
     this.closeApp.emit(true);
   }
+
   reset(id: string) {
     this.formElement.resetComponent(id);
     switch (id) {
       case 'email':
-        this.errorEmail = '';
+        this.errorEmail = this.formElement.noError;
         break;
       case 'last-name':
-        this.errorLastName = '';
+        this.errorLastName = this.formElement.noError;
         break;
       case 'first-name':
-        this.errorFirstName = '';
+        this.errorFirstName = this.formElement.noError;
         break;
       case 'user-name':
         break;
@@ -52,6 +54,7 @@ export class SignupComponent implements OnInit {
         break;
     }
   }
+
   modify(id: string, value: string) {
     switch (id) {
       case 'email':
@@ -70,6 +73,7 @@ export class SignupComponent implements OnInit {
         break;
     }
   }
+
   controlForm(event: MouseEvent) {
     let errors = false;
     event.preventDefault();
@@ -103,10 +107,6 @@ export class SignupComponent implements OnInit {
       this.formElement.displayError('first-name');
       errors = true;
     }
-    errors ? null : this.sendForm();
-  }
-
-  sendForm() {
-    this.endForm = true;
+    errors ? null : (this.endForm = true);
   }
 }

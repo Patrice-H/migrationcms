@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormService } from 'src/app/services/form.service';
 
@@ -10,30 +9,33 @@ import { FormService } from 'src/app/services/form.service';
 })
 export class LoginComponent {
   isHidden: boolean = false;
-  errorMessage: string = '';
   userRemembered: boolean = false;
   password: string = '';
+  errorMessage: string = this.formElement.noError;
+
   @Input() activeLink!: string;
   @Output() closeApp = new EventEmitter<boolean>();
   @Output() nextStep = new EventEmitter<string>();
 
   constructor(
     private storage: StorageService,
-    private formElement: FormService,
-    private router: Router
+    private formElement: FormService
   ) {}
 
   cancel(op: boolean): void {
     this.isHidden = op;
     this.closeApp.emit(true);
   }
-  reset(): void {
-    this.formElement.resetComponent('pass');
-    this.errorMessage = '';
+
+  reset(id: string): void {
+    this.formElement.resetComponent(id);
+    this.errorMessage = this.formElement.noError;
   }
+
   modify(value: string) {
     this.password = value;
   }
+
   remember() {
     const checkbox = document.getElementById('remembered');
     checkbox?.classList.remove('error');
@@ -42,13 +44,7 @@ export class LoginComponent {
       ? checkbox?.classList.add('approved')
       : checkbox?.classList.remove('approved');
   }
-  dataEntry(): boolean {
-    if (this.password === '') {
-      return false;
-    }
 
-    return true;
-  }
   controlForm(event: MouseEvent) {
     let errors = false;
     event.preventDefault();
@@ -59,19 +55,13 @@ export class LoginComponent {
     }
     this.userRemembered ? this.storage.setExpiryDate() : null;
     if (!errors) {
-      this.sendForm();
+      /** control backend **/
+      /* => pass unknown 
+      this.errorMessage = this.formElement.invalidPasswordError;
+      this.formElement.displayError('pass')
+      /* =>  pass match */
+      this.storage.writeToken();
+      this.nextStep.emit('account');
     }
-  }
-  sendForm() {
-    /* control backend  */
-    /* pass unknown =>
-    this.errorMessage = this.formElement.invalidPasswordError;
-    this.formElement.displayError('pass')
-    /* pass match => */
-    this.storage.writeToken();
-    this.redirection();
-  }
-  redirection() {
-    this.nextStep.emit('account');
   }
 }

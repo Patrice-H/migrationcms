@@ -10,9 +10,10 @@ import { FormService } from 'src/app/services/form.service';
 export class LogSignComponent implements OnInit {
   isHidden: boolean = false;
   endForm: boolean = false;
-  errorMessage: string = '';
   termOfUseApproved: boolean = false;
   userEmail: string = '';
+  errorMessage: string = this.formElement.noError;
+
   @Output() closeApp = new EventEmitter<boolean>();
   @Output() nextStep = new EventEmitter<string>();
 
@@ -29,6 +30,7 @@ export class LogSignComponent implements OnInit {
     this.isHidden = op;
     this.closeApp.emit(true);
   }
+
   approve(): void {
     const checkbox = document.getElementById('term-of-use');
     checkbox?.classList.remove('error');
@@ -37,13 +39,16 @@ export class LogSignComponent implements OnInit {
       ? checkbox?.classList.add('approved')
       : checkbox?.classList.remove('approved');
   }
-  reset(): void {
-    this.formElement.resetComponent('email');
-    this.errorMessage = '';
+
+  reset(id: string): void {
+    this.formElement.resetComponent(id);
+    this.errorMessage = this.formElement.noError;
   }
+
   modify(value: string): void {
     this.userEmail = value;
   }
+
   controlForm(event: MouseEvent) {
     const checkbox = document.getElementById('term-of-use');
     let errors = false;
@@ -64,6 +69,7 @@ export class LogSignComponent implements OnInit {
     }
     errors ? null : this.controlEmail();
   }
+
   controlEmail() {
     if (this.storage.isConnected()) {
       /* control backend  */
