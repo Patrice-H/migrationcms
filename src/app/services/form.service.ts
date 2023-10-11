@@ -8,6 +8,7 @@ export class FormService {
   invalidEmailError: string = 'e-mail invalide';
   invalidNameError: string = 'format invalide';
   invalidPasswordError: string = 'mot de passe invalide';
+  noError: string = '';
 
   resetComponent(id: string) {
     const input = document.getElementById(id);
