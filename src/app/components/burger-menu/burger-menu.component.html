@@ -6,38 +6,43 @@
 />
 <nav>
   <a
+    #home
     href="./"
     id="home"
     data-testid="home-page"
-    (click)="navigate($event, 'home')"
+    (click)="navigate($event, home.id)"
     >Accueil</a
   >
   <a
+    #services
     href="./services"
     id="services"
     data-testid="services-page"
-    (click)="navigate($event, 'services')"
+    (click)="navigate($event, services.id)"
     >Services</a
   >
   <a
+    #docs
     href="./docs"
     id="docs"
     data-testid="docs-page"
-    (click)="navigate($event, 'docs')"
+    (click)="navigate($event, docs.id)"
     >Documentation</a
   >
   <a
+    #forum
     href="./forum"
     id="forum"
     data-testid="forum-page"
-    (click)="navigate($event, 'forum')"
+    (click)="navigate($event, forum.id)"
     >Forum</a
   >
   <a
+    #account
     href="./account"
     id="account"
     data-testid="account-page"
-    (click)="navigate($event, 'account')"
+    (click)="navigate($event, account.id)"
     >Mon Compte</a
   >
   <a href="#" id="connexion" (click)="logInOut($event)">{{ buttonLabel }}</a>
