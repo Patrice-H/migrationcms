@@ -1,6 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
+/**
+ * Black Window
+ * @class
+ */
 @Component({
   selector: 'app-black-window',
   templateUrl: './black-window.component.html',
@@ -18,6 +22,10 @@ export class BlackWindowComponent {
     this.activePage = path;
   }
 
+  /**
+   * Close the window by manipulating component's classes, and emits a cancel event.
+   * @function
+   */
   closeWindow(): void {
     const button = document.getElementById('close-btn');
     const window = document.getElementById('black-window');
@@ -27,12 +35,5 @@ export class BlackWindowComponent {
       button?.classList.add('hidden');
     }, 600);
     this.cancel.emit(true);
-  }
-  resetComponent(): void {
-    const button = document.getElementById('close-btn');
-    const window = document.getElementById('black-window');
-    button?.classList.remove('activated');
-    button?.classList.remove('hidden');
-    window?.classList.remove('progressive-hidden');
   }
 }
