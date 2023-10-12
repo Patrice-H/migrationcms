@@ -24,4 +24,22 @@ export class MenuService {
       event.emit('account');
     }
   }
+
+  navigate(event: EventEmitter<string>, link: string) {
+    event.emit(link);
+  }
+
+  toggleChevron(state: string) {
+    const chevron = document.getElementById('chevron');
+    chevron?.setAttribute('class', '');
+    chevron?.classList.add(state);
+  }
+
+  toggleSubMenu(tab: string) {
+    const subMenu = document.getElementById('user-logo');
+    subMenu?.classList.remove('active');
+    if (tab === 'account' || tab === 'messaging') {
+      subMenu?.classList.add('active');
+    }
+  }
 }
