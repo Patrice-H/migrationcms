@@ -1,7 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
+import { MenuService } from 'src/app/services/menu.service';
 
+/**
+ * Burger Menu
+ * @class
+ * @extends OnInit
+ */
 @Component({
   selector: 'app-burger-menu',
   templateUrl: './burger-menu.component.html',
@@ -11,27 +16,31 @@ export class BurgerMenuComponent implements OnInit {
   buttonLabel!: string;
   @Output() burgerLink = new EventEmitter<string>();
 
-  constructor(private storage: StorageService, private router: Router) {}
+  constructor(private storage: StorageService, private menu: MenuService) {}
 
   ngOnInit(): void {
     this.buttonLabel = this.storage.isConnected() ? 'Déconnexion' : 'Connexion';
   }
 
+  /**
+   * @function
+   * @description Emits the target value.
+   * @param {MouseEvent} event - Trig on click
+   * @param {string} target - Destination that the navigation should go to.
+   */
   navigate(event: MouseEvent, target: string) {
     event.preventDefault();
-    this.burgerLink.emit(target);
+    this.menu.navigate(this.burgerLink, target);
   }
+
+  /**
+   * @function
+   * @description Log user in or out
+   * @param {MouseEvent} event - Trig on click
+   */
   logInOut(event: MouseEvent) {
     event.preventDefault();
-    if (this.buttonLabel === 'Connexion') {
-      this.storage.writeToken();
-      this.buttonLabel = 'Déconnexion';
-    } else {
-      this.storage.disconnect();
-      this.buttonLabel = 'Connexion';
-      this.router.navigate(['/home']);
-    }
-
-    this.burgerLink.emit('account');
+    this.menu.logIn(this.burgerLink);
+    this.menu.switchLabel(this.buttonLabel);
   }
 }

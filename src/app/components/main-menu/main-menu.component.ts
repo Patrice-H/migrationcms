@@ -1,7 +1,13 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
+import { MenuService } from 'src/app/services/menu.service';
 
+/**
+ * Main menu
+ * @class
+ * @extends OnInit
+ */
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.component.html',
@@ -14,7 +20,11 @@ export class MainMenuComponent implements OnInit {
   @Input() activeTab = '';
   @Output() mainLink = new EventEmitter<string>();
 
-  constructor(private router: Router, private storage: StorageService) {}
+  constructor(
+    private router: Router,
+    private storage: StorageService,
+    private menu: MenuService
+  ) {}
 
   ngOnInit(): void {
     this.isOpened = false;
@@ -27,44 +37,39 @@ export class MainMenuComponent implements OnInit {
     const activeTab = document.getElementById(this.activeTab);
     activeTab?.classList.add('active');
     this.buttonLabel = this.storage.isConnected() ? 'Déconnexion' : 'Connexion';
-    this.resetMenu();
-    this.updateSubMenu();
+    this.menu.toggleChevron(this.chevronState);
+    this.menu.toggleSubMenu(this.activeTab);
   }
 
+  /**
+   * @function
+   * @description Emits the target value.
+   * @param {MouseEvent} event - Trig on click
+   * @param {string} target - Destination that the navigation should go to.
+   */
   navigate(event: MouseEvent, target: string) {
     event.preventDefault();
-    this.mainLink.emit(target);
+    this.menu.navigate(this.mainLink, target);
   }
 
-  updateSubMenu() {
-    const subMenu = document.getElementById('user-logo');
-    subMenu?.classList.remove('active');
-    if (this.activeTab === 'account' || this.activeTab === 'messaging') {
-      subMenu?.classList.add('active');
-    }
-  }
-
+  /**
+   * @function
+   * @description Open or close submenu.
+   */
   openCloseMenu(): void {
     this.isOpened = !this.isOpened;
     this.chevronState = this.isOpened ? 'up' : 'down';
-    this.resetMenu();
+    this.menu.toggleChevron(this.chevronState);
   }
 
-  resetMenu(): void {
-    const chevron = document.getElementById('chevron');
-    chevron?.setAttribute('class', '');
-    chevron?.classList.add(this.chevronState);
-  }
+  /**
+   * @function
+   * @description Log user in or out
+   * @param {MouseEvent} event - Trig on click
+   */
   logInOut(event: MouseEvent) {
     event.preventDefault();
-    if (this.buttonLabel === 'Connexion') {
-      this.storage.writeToken();
-      this.buttonLabel = 'Déconnexion';
-    } else {
-      this.storage.disconnect();
-      this.buttonLabel = 'Connexion';
-      this.router.navigate(['/home']);
-    }
-    this.mainLink.emit('account');
+    this.menu.logIn(this.mainLink);
+    this.menu.switchLabel(this.buttonLabel);
   }
 }
