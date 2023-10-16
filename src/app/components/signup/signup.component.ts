@@ -2,6 +2,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormService } from 'src/app/services/form.service';
 import { StorageService } from 'src/app/services/storage.service';
 
+/**
+ * @class
+ * @description Sign up graphic interface
+ * @extends OnInit
+ */
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -25,17 +30,30 @@ export class SignupComponent implements OnInit {
     private formElement: FormService
   ) {}
 
+  /**
+   * @function
+   * @description Init component
+   */
   ngOnInit(): void {
     let rawData = this.storage.getLocalStorage();
     let data = rawData === null ? null : JSON.parse(rawData);
     this.eMail = data.eMail;
   }
 
+  /**
+   * @function
+   * @description Emit an event - Close window
+   */
   cancel(op: boolean): void {
     this.isHidden = op;
     this.closeApp.emit(true);
   }
 
+  /**
+   * @function
+   * @description Reset component and error message
+   * @param {String} id Component id
+   */
   reset(id: string) {
     this.formElement.resetComponent(id);
     switch (id) {
@@ -55,6 +73,11 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  /**
+   * @function
+   * @description Set input value
+   * @param {String} value
+   */
   modify(id: string, value: string) {
     switch (id) {
       case 'email':
@@ -74,39 +97,51 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  /**
+   * @function
+   * @description Frontend sign up form control
+   * @param {MouseEvent} event - Trig on click
+   */
   controlForm(event: MouseEvent) {
     let errors = false;
     event.preventDefault();
+    //
     if (this.formElement.emptyField(this.eMail)) {
       this.errorEmail = this.formElement.emptyFieldError;
       this.formElement.displayError('email');
       errors = true;
     }
+    //
     if (this.formElement.emailInvalid(this.eMail)) {
       this.errorEmail = this.formElement.invalidEmailError;
       this.formElement.displayError('email');
       errors = true;
     }
+    //
     if (this.formElement.emptyField(this.lastName)) {
       this.errorLastName = this.formElement.emptyFieldError;
       this.formElement.displayError('last-name');
       errors = true;
     }
+    //
     if (this.formElement.nameInvalid(this.lastName)) {
       this.errorLastName = this.formElement.invalidNameError;
       this.formElement.displayError('last-name');
       errors = true;
     }
+    //
     if (this.formElement.emptyField(this.firstName)) {
       this.errorFirstName = this.formElement.emptyFieldError;
       this.formElement.displayError('first-name');
       errors = true;
     }
+    //
     if (this.formElement.nameInvalid(this.firstName)) {
       this.errorFirstName = this.formElement.invalidNameError;
       this.formElement.displayError('first-name');
       errors = true;
     }
+
     errors ? null : (this.endForm = true);
   }
 }

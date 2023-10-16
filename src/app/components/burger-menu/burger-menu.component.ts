@@ -3,8 +3,8 @@ import { StorageService } from 'src/app/services/storage.service';
 import { MenuService } from 'src/app/services/menu.service';
 
 /**
- * Burger Menu
  * @class
+ * @description Burger Menu
  * @extends OnInit
  */
 @Component({
@@ -18,6 +18,10 @@ export class BurgerMenuComponent implements OnInit {
 
   constructor(private storage: StorageService, private menu: MenuService) {}
 
+  /**
+   * @function
+   * @description Init component
+   */
   ngOnInit(): void {
     this.buttonLabel = this.storage.isConnected() ? 'Déconnexion' : 'Connexion';
   }

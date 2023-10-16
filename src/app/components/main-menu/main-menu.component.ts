@@ -4,8 +4,8 @@ import { StorageService } from 'src/app/services/storage.service';
 import { MenuService } from 'src/app/services/menu.service';
 
 /**
- * Main menu
  * @class
+ * @description Main menu
  * @extends OnInit
  */
 @Component({
@@ -26,6 +26,10 @@ export class MainMenuComponent implements OnInit {
     private menu: MenuService
   ) {}
 
+  /**
+   * @function
+   * @description Init component
+   */
   ngOnInit(): void {
     this.isOpened = false;
     this.chevronState = 'down';
