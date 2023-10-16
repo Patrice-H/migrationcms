@@ -1,7 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { StorageService } from 'src/app/services/storage.service';
 import { FormService } from 'src/app/services/form.service';
+import { LoginControllerService } from 'src/app/services/login-controller.service';
 
+/**
+ * @class
+ * @description Login graphic interface
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,23 +24,42 @@ export class LoginComponent {
 
   constructor(
     private storage: StorageService,
-    private formElement: FormService
+    private formElement: FormService,
+    private controller: LoginControllerService
   ) {}
 
+  /**
+   * @function
+   * @description Emit an event - Close window
+   */
   cancel(op: boolean): void {
     this.isHidden = op;
     this.closeApp.emit(true);
   }
 
+  /**
+   * @function
+   * @description Reset component and error message
+   * @param {String} id Component id
+   */
   reset(id: string): void {
     this.formElement.resetComponent(id);
     this.errorMessage = this.formElement.noError;
   }
 
+  /**
+   * @function
+   * @description Set user email value
+   * @param {String} value Email value
+   */
   modify(value: string) {
     this.password = value;
   }
 
+  /**
+   * @function
+   * @description Set the checkbox state
+   */
   remember() {
     const checkbox = document.getElementById('remembered');
     checkbox?.classList.remove('error');
@@ -45,23 +69,25 @@ export class LoginComponent {
       : checkbox?.classList.remove('approved');
   }
 
+  /**
+   * @function
+   * @description Frontend log in form control
+   * @param {MouseEvent} event - Trig on click
+   */
   controlForm(event: MouseEvent) {
     let errors = false;
     event.preventDefault();
+    // Empty user password control
     if (this.formElement.emptyField(this.password)) {
       this.errorMessage = this.formElement.emptyFieldError;
       this.formElement.displayError('pass');
       errors = true;
     }
+
     this.userRemembered ? this.storage.setExpiryDate() : null;
-    if (!errors) {
-      /** control backend **/
-      /* => pass unknown 
-      this.errorMessage = this.formElement.invalidPasswordError;
-      this.formElement.displayError('pass')
-      /* =>  pass match */
-      this.storage.writeToken();
-      this.nextStep.emit('account');
-    }
+    errors
+      ? null
+      : this.controller.controlPassword(this.nextStep, this.errorMessage);
+    this.formElement.displayError('pass');
   }
 }
