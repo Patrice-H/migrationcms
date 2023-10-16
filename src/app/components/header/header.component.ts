@@ -2,6 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/services/storage.service';
 
+/**
+ * @class
+ * @description Header
+ * @extends OnInit
+ */
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,16 +20,25 @@ export class HeaderComponent implements OnInit {
   activeLink!: string;
 
   constructor(private router: Router, private storage: StorageService) {
-    const path =
+    this.activePage =
       this.router.url.split('/')[1] === ''
         ? 'home'
         : this.router.url.split('/')[1];
-    this.activePage = path;
   }
 
+  /**
+   * @function
+   * @description Init component
+   */
   ngOnInit(): void {
     this.display(this.activePage);
   }
+
+  /**
+   * @function
+   * @description Display logSign component on specific pages if user isn't connected
+   * @param {String} page
+   */
   display(page: string): void {
     this.activeLink = page;
     if (
@@ -39,11 +53,22 @@ export class HeaderComponent implements OnInit {
       this.router.navigate([`/${this.activeLink}`]);
     }
   }
+
+  /**
+   * @function
+   * @description Reset all views
+   */
   reset(): void {
     this.logSignView = false;
     this.loginView = false;
     this.signupView = false;
   }
+
+  /**
+   * @function
+   * @description Switch route
+   * @param {String} route - Step to connect / sign in
+   */
   routing(route: string): void {
     switch (route) {
       case 'signUp':
@@ -59,14 +84,29 @@ export class HeaderComponent implements OnInit {
         break;
     }
   }
+
+  /**
+   * @function
+   * @description Step log in
+   */
   stepLog(): void {
     this.logSignView = false;
     this.loginView = true;
   }
+
+  /**
+   * @function
+   * @description Step sig in
+   */
   stepSign(): void {
     this.logSignView = false;
     this.signupView = true;
   }
+
+  /**
+   * @function
+   * @description Step connexion
+   */
   connect(): void {
     this.reset();
     if (this.storage.isConnected()) {
