@@ -15,11 +15,10 @@ export class BlackWindowComponent {
   @Output() cancel = new EventEmitter<boolean>();
 
   constructor(private router: Router) {
-    const path =
+    this.activePage =
       this.router.url.split('/')[1] === ''
         ? 'home'
         : this.router.url.split('/')[1];
-    this.activePage = path;
   }
 
   /**
