@@ -105,37 +105,37 @@ export class SignupComponent implements OnInit {
   controlForm(event: MouseEvent) {
     let errors = false;
     event.preventDefault();
-    //
+    // Empty user Email control
     if (this.formElement.emptyField(this.eMail)) {
       this.errorEmail = this.formElement.emptyFieldError;
       this.formElement.displayError('email');
       errors = true;
     }
-    //
+    // Invalid user Email control
     if (this.formElement.emailInvalid(this.eMail)) {
       this.errorEmail = this.formElement.invalidEmailError;
       this.formElement.displayError('email');
       errors = true;
     }
-    //
+    // Empty user last name control
     if (this.formElement.emptyField(this.lastName)) {
       this.errorLastName = this.formElement.emptyFieldError;
       this.formElement.displayError('last-name');
       errors = true;
     }
-    //
+    // Invalid user last name control
     if (this.formElement.nameInvalid(this.lastName)) {
       this.errorLastName = this.formElement.invalidNameError;
       this.formElement.displayError('last-name');
       errors = true;
     }
-    //
+    // Empty user first name control
     if (this.formElement.emptyField(this.firstName)) {
       this.errorFirstName = this.formElement.emptyFieldError;
       this.formElement.displayError('first-name');
       errors = true;
     }
-    //
+    // Invalid user first name control
     if (this.formElement.nameInvalid(this.firstName)) {
       this.errorFirstName = this.formElement.invalidNameError;
       this.formElement.displayError('first-name');
