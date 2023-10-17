@@ -1,0 +1,12 @@
+article {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #f2f2fd;
+  width: 150px;
+  padding: 10px;
+  border-radius: 3px;
+}
+app-cms-label {
+  flex-grow: 1;
+}
