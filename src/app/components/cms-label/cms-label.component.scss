@@ -1,0 +1,22 @@
+article {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #f2f2fd;
+  width: 150px;
+  padding: 10px;
+  border-radius: 3px;
+}
+div {
+  flex-grow: 1;
+}
+img {
+  display: block;
+  width: 50px;
+  margin: auto;
+}
+p {
+  margin: 10px 0 0;
+  text-align: center;
+  text-transform: capitalize;
+}
