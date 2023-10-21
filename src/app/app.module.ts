@@ -21,6 +21,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { BurgerMenuComponent } from './components/burger-menu/burger-menu.component';
 import { BlackWindowComponent } from './components/black-window/black-window.component';
+import { HomeFormComponent } from './components/home-form/home-form.component';
+import { SelectCmsComponent } from './components/select-cms/select-cms.component';
+import { CmsPanelComponent } from './components/cms-panel/cms-panel.component';
+import { CmsLabelComponent } from './components/cms-label/cms-label.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,10 @@ import { BlackWindowComponent } from './components/black-window/black-window.com
     MainMenuComponent,
     BurgerMenuComponent,
     BlackWindowComponent,
+    HomeFormComponent,
+    SelectCmsComponent,
+    CmsPanelComponent,
+    CmsLabelComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
