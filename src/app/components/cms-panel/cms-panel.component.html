@@ -1,0 +1,12 @@
+<app-black-window (cancel)="cancel()"></app-black-window>
+<section *ngIf="!isHidden">
+  <div>
+    <app-cms-label
+      *ngFor="let item of cmsList"
+      [cms]="setCms(item)"
+      id="{{ item }}-label"
+      [ngClass]="getClass(item)"
+      (click)="setActiveLabel(item)"
+    ></app-cms-label>
+  </div>
+</section>
