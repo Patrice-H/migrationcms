@@ -14,7 +14,6 @@ export class CmsPanelComponent implements OnInit {
   @Output() activeEvent = new EventEmitter<string>();
 
   ngOnInit(): void {
-    console.log(this.activeLabel);
     this.setActiveLabel(this.activeLabel);
   }
 
