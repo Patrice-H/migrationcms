@@ -4,7 +4,13 @@
   [activeLabel]="activeLabel"
   (activeEvent)="update($event)"
 ></app-cms-panel>
-<div>
+<h2>Configurez la migration de votre site</h2>
+<div class="form">
+  <p>source</p>
+  <span>>>></span>
+  <p>destination</p>
+</div>
+<div class="flex">
   <app-select-cms
     [cms]="activeSource"
     (click)="openPanel('source')"
@@ -14,4 +20,7 @@
     [cms]="activeTarget"
     (click)="openPanel('target')"
   ></app-select-cms>
+</div>
+<div class="flex">
+  <button [ngClass]="disabled()">Configurer</button>
 </div>

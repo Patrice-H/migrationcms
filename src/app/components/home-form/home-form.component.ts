@@ -42,5 +42,12 @@ export class HomeFormComponent implements OnInit {
     }
     this.activeLabel = label;
     this.panelHidden = true;
+    console.log(this.activeSource, this.activeTarget);
+  }
+
+  disabled(): string | null {
+    const state = this.activeSource === this.activeTarget ? 'disabled' : null;
+
+    return state;
   }
 }
