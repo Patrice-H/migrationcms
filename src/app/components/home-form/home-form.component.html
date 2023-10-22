@@ -1,6 +1,17 @@
-<app-cms-panel></app-cms-panel>
+<app-cms-panel
+  *ngIf="!panelHidden"
+  (closeOptions)="close()"
+  [activeLabel]="activeLabel"
+  (activeEvent)="update($event)"
+></app-cms-panel>
 <div>
-  <app-select-cms [cms]="setCmsSource()"></app-select-cms>
+  <app-select-cms
+    [cms]="activeSource"
+    (click)="openPanel('source')"
+  ></app-select-cms>
   <img src="../../../assets/mechanics.png" alt="migration-cms" />
-  <app-select-cms [cms]="setCmsTarget()"></app-select-cms>
+  <app-select-cms
+    [cms]="activeTarget"
+    (click)="openPanel('target')"
+  ></app-select-cms>
 </div>
