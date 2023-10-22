@@ -10,7 +10,7 @@ describe('LoginControllerService', () => {
     service = TestBed.inject(LoginControllerService);
   });
 
-  it('should be created', () => {
+  it('should be create login controller service', () => {
     expect(service).toBeTruthy();
   });
 });
