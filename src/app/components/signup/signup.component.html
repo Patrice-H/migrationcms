@@ -43,6 +43,15 @@
     </button>
   </form>
   <div *ngIf="endForm" id="final-window">
-    <p>Un e-mail contenant un lien d'activation, viens de vous être envoyé.</p>
+    <p>
+      <img src="../../../assets/mechanics.png" alt="migration-cms" />
+    </p>
+
+    <p>
+      Un e-mail contenant un lien d'activation, viens d'être envoyé à l'adresse
+      {{ eMail }}
+    </p>
+    <p>Merci de cliquer sur celui-ci pour finaliser votre inscription</p>
+    <p>Ce lien sera inactif dans 30 minutes.</p>
   </div>
 </div>
