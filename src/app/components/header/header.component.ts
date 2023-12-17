@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
       case 'logIn':
         this.stepLog();
         break;
-      case 'account':
+      case 'connect':
         this.connect();
         break;
       default:
