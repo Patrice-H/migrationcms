@@ -10,26 +10,26 @@ export class FormService {
   invalidPasswordError: string = 'mot de passe invalide';
   noError: string = '';
 
-  resetComponent(id: string) {
+  resetComponent(id: string): void {
     const input = document.getElementById(id);
     const errorMessage = document.getElementById(`error-${id}`);
     input?.classList.remove('error');
     errorMessage?.classList.add('hidden');
   }
-  emptyField(entry: string) {
+  emptyField(entry: string): boolean {
     if (entry === '' || entry === undefined) {
       return true;
     }
 
     return false;
   }
-  displayError(id: string) {
+  displayError(id: string): void {
     const input = document.getElementById(id);
     const errorMessage = document.getElementById(`error-${id}`);
     input?.classList.add('error');
     errorMessage?.classList.remove('hidden');
   }
-  hideError(id: string) {
+  hideError(id: string): void {
     const input = document.getElementById(id);
     const errorMessage = document.getElementById(`error-${id}`);
   }
