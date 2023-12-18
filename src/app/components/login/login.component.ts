@@ -52,7 +52,7 @@ export class LoginComponent {
    * @description Set user email value
    * @param {String} value Email value
    */
-  modify(value: string) {
+  modify(value: string): void {
     this.password = value;
   }
 
@@ -60,7 +60,7 @@ export class LoginComponent {
    * @function
    * @description Set the checkbox state
    */
-  remember() {
+  remember(): void {
     const checkbox = document.getElementById('remembered');
     checkbox?.classList.remove('error');
     this.userRemembered = !this.userRemembered;
@@ -74,7 +74,7 @@ export class LoginComponent {
    * @description Frontend log in form control
    * @param {MouseEvent} event - Trig on click
    */
-  controlForm(event: MouseEvent) {
+  controlForm(event: MouseEvent): void {
     let errors = false;
     event.preventDefault();
     // Empty user password control
@@ -87,7 +87,11 @@ export class LoginComponent {
     this.userRemembered ? this.storage.setExpiryDate() : null;
     errors
       ? null
-      : this.controller.controlPassword(this.nextStep, this.errorMessage);
+      : this.controller.controlPassword(
+          this.nextStep,
+          this.password,
+          this.errorMessage
+        );
     this.formElement.displayError('pass');
   }
 }

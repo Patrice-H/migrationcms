@@ -83,7 +83,7 @@ export class LogSignComponent implements OnInit {
    * @description Frontend log/sign in form control
    * @param {MouseEvent} event - Trig on click
    */
-  controlForm(event: MouseEvent) {
+  controlForm(event: MouseEvent): void {
     const checkbox = document.getElementById('term-of-use');
     let errors = false;
     event.preventDefault();
@@ -105,6 +105,6 @@ export class LogSignComponent implements OnInit {
       errors = true;
     }
 
-    errors ? null : this.controller.controlEmail(this.nextStep);
+    errors ? null : this.controller.controlEmail(this.nextStep, this.userEmail);
   }
 }
