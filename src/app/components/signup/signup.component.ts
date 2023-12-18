@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
    * @description Reset component and error message
    * @param {String} id Component id
    */
-  reset(id: string) {
+  reset(id: string): void {
     this.formElement.resetComponent(id);
     switch (id) {
       case 'email':
@@ -78,7 +78,7 @@ export class SignupComponent implements OnInit {
    * @description Set input value
    * @param {String} value
    */
-  modify(id: string, value: string) {
+  modify(id: string, value: string): void {
     switch (id) {
       case 'email':
         this.eMail = value;
@@ -102,7 +102,7 @@ export class SignupComponent implements OnInit {
    * @description Frontend sign up form control
    * @param {MouseEvent} event - Trig on click
    */
-  controlForm(event: MouseEvent) {
+  controlForm(event: MouseEvent): void {
     let errors = false;
     event.preventDefault();
     // Empty user Email control
