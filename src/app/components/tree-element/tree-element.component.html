@@ -1,0 +1,19 @@
+<div class="{{getClass()}}" id="{{getId()}}" (click)="toggleFolder()">
+    <img
+    *ngFor="let item of branchs"
+    src="../../../assets/no-path.png"
+    alt="chemin" />
+    <img *ngIf="pathType === 'double'" 
+        src="../../../assets/double-path.png" 
+        alt="chemin" />
+    <img *ngIf="pathType === 'simple'" 
+        src="../../../assets/simple-path.png" 
+        alt="chemin" />
+    <img #folderImage *ngIf="index === 0; else fileImage" 
+        src="../../../assets/folder.png" 
+        alt="dossier" />
+    <ng-template #fileImage>
+        <img src="../../../assets/file.png" alt="fichier" />
+    </ng-template>
+    <span>{{data}}</span>
+</div>
