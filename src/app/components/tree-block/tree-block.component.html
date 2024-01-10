@@ -1,0 +1,29 @@
+<div *ngFor="let line of data; index as i">
+  <app-tree-block *ngIf="isArray(data[i]); else treeFolder" 
+    [data]="data[i]" 
+    [indentation]="indentation + 1" 
+    [control]="i"
+    [kinship]="kinship"
+  ></app-tree-block>
+  <ng-template #treeFolder>
+    <app-tree-element *ngIf="i === 0; else treeFile" 
+      [data]="data[i]" 
+      [index]="i" 
+      [indentation]="indentation" 
+      [blockLength]="data.length"
+      [kinship]="cumulIndex"
+    >
+    </app-tree-element>
+    <ng-template #treeFile>
+      <app-tree-element 
+        [data]="data[i]" 
+        [index]="i" 
+        [indentation]="indentation + 1" 
+        [blockLength]="data.length"
+        [kinship]="cumulIndex"
+      >
+      </app-tree-element>
+    </ng-template>
+  </ng-template>
+</div>
+ 
