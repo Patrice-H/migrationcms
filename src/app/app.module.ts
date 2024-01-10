@@ -25,6 +25,12 @@ import { HomeFormComponent } from './components/home-form/home-form.component';
 import { SelectCmsComponent } from './components/select-cms/select-cms.component';
 import { CmsPanelComponent } from './components/cms-panel/cms-panel.component';
 import { CmsLabelComponent } from './components/cms-label/cms-label.component';
+import { UnderConstructComponent } from './components/under-construct/under-construct.component';
+import { ConnectFormComponent } from './components/connect-form/connect-form.component';
+import { MigrationFormComponent } from './components/migration-form/migration-form.component';
+import { TreeElementComponent } from './components/tree-element/tree-element.component';
+import { TreeBlockComponent } from './components/tree-block/tree-block.component';
+import { TreeComponent } from './components/tree/tree.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +57,12 @@ import { CmsLabelComponent } from './components/cms-label/cms-label.component';
     SelectCmsComponent,
     CmsPanelComponent,
     CmsLabelComponent,
+    UnderConstructComponent,
+    ConnectFormComponent,
+    MigrationFormComponent,
+    TreeElementComponent,
+    TreeBlockComponent,
+    TreeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
